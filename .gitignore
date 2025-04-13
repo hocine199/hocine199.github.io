@@ -2,3 +2,6 @@ venv/
 *.py
 templates/
 content/
+__pycache__/
+.mypy_cache
+__pycache__/ssg.cpython-310.pyc
