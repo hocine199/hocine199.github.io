@@ -1,29 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>List of Posts</title>
+    <meta charset="UTF-8">
+    <title>My Static Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background: #f9f9f9;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        aside {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        aside img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        aside h2 {
+            margin-top: 0;
+        }
+
+        aside p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        aside a {
+            color: #1abc9c;
+            text-decoration: none;
+            display: block;
+            margin: 0.3rem 0;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .socials i {
+            font-size: 1.5rem;
+            color: white;
+            margin-right: 0.5rem;
+            transition: color 0.2s ease;
+        }
+        .socials a:hover i {
+            color: #1abc9c;
+        }
+        .socials {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .socials a {
+            color: white;
+            font-size: 1.4rem;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+        .links {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .links a {
+            display: block;
+            padding: 0.75rem 0;
+            color: #ecf0f1;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #1abc9c;
+        }
+        
+
+    </style>
 </head>
 <body>
 
-<h1>My Blog Posts</h1>
+    <aside>
+        <img src="https://media.licdn.com/dms/image/v2/C4D03AQH3VDb0GQjtbA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1643048766195?e=1750291200&v=beta&t=Ot3_CKRu4QCKw24vlhU0s4-kiVU6seGArjfF6V0imNs" alt="Author picture">
+        <h2>Hocine Mahmoudi</h2>
+        <p>Welcome to my corner</p>
 
+        <div class="links">
+            
+                <a href="/">Home</a>
+            
+                <a href="/blog">Blog</a>
+            
+                <a href="/about">About</a>
+            
+        </div>
 
-  <p>
-      <h2>1: <a href="posts/the-best-books-that-i-have-read/">The Best Books that I have read</a> <small>2018-03-18 20:10</small></h2>
-      The best books that I have read over a couple of years and their summaries
-  </p>
+        <div class="socials">
+            
+                <a href="https://github.com/hocine199" title="GitHub" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            
+                <a href="https://linkedin.com/in/hocine" title="LinkedIn" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            
+                <a href="https://twitter.com/hocine" title="Twitter" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            
+        </div>
+    </aside>
 
-  <p>
-      <h2>2: <a href="posts/how-to-become-senior-software-developer/">How to become a senior software developer</a> <small>2018-02-25 20:10</small></h2>
-      How I become a senior software developer and how you can too
-  </p>
-
-  <p>
-      <h2>3: <a href="posts/nginx-ingress-controller/">Nginx Ingress Controller</a> <small>2017-11-11 20:10</small></h2>
-      Nginx Ingress Controller Tutorial
-  </p>
-
+    <main>
+        <h1>My Static Homepage</h1>
+        <p>A sample static site generated using Python and Jinja2.</p>
+        <ul>
+          
+          <p>
+              <h2>1: <a href="posts/the-best-books-that-i-have-read/">The Best Books that I have read</a> <small>2018-03-18 20:10</small></h2>
+              The best books that I have read over a couple of years and their summaries
+          </p>
+          
+          <p>
+              <h2>2: <a href="posts/how-to-become-senior-software-developer/">How to become a senior software developer</a> <small>2018-02-25 20:10</small></h2>
+              How I become a senior software developer and how you can too
+          </p>
+          
+          <p>
+              <h2>3: <a href="posts/nginx-ingress-controller/">Nginx Ingress Controller</a> <small>2017-11-11 20:10</small></h2>
+              Nginx Ingress Controller Tutorial
+          </p>
+          
+        </ul>
+      </main>
 
 </body>
 </html>
