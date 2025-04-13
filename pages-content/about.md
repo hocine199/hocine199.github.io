@@ -1,4 +1,4 @@
 title: About
-slug: about
+slug: About
 
 The website is powered by [Pelican](http://docs.getpelican.com/) static site generator and [Github Pages](https://pages.github.com/).
