@@ -1,4 +1,4 @@
 title: About
 slug: About
 
-The website is powered by [Pelican](http://docs.getpelican.com/) static site generator and [Github Pages](https://pages.github.com/).
+The website is built with the following Python libraries: [jinja2](https://jinja.palletsprojects.com/en/stable/) and [markdown2](https://github.com/trentm/python-markdown2).
