@@ -98,10 +98,52 @@
             color: #1abc9c;
         }
         
+/* Toggle button styling */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: #1abc9c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Hide sidebar by default on small screens */
+@media (max-width: 768px) {
+    aside {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+
+    aside.show {
+        left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    main {
+        padding: 1rem;
+    }
+}
 
     </style>
 </head>
 <body>
+    <button id="toggleSidebar" class="sidebar-toggle">
+        ☰
+    </button>
   <aside>
     <img src="https://media.licdn.com/dms/image/v2/C4D03AQH3VDb0GQjtbA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1643048766195?e=1750291200&v=beta&t=Ot3_CKRu4QCKw24vlhU0s4-kiVU6seGArjfF6V0imNs" alt="Author picture">
     <h2>Hocine Mahmoudi</h2>
@@ -225,7 +267,14 @@ and once again follows the steps of Robert Langdon. If you like Dan Brown and Ro
 
 
 
+    <script>
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.querySelector('aside');
 
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
