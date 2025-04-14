@@ -97,8 +97,11 @@
             background: rgba(255, 255, 255, 0.1);
             color: #1abc9c;
         }
-        
-/* Toggle button styling */
+        .layout {
+            display: flex;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }/* Toggle button styling */
 .sidebar-toggle {
     display: none;
     position: fixed;
@@ -116,11 +119,19 @@
 
 /* Hide sidebar by default on small screens */
 @media (max-width: 768px) {
+    .layout {
+        transform: translateX(0);
+    }
+
+    .layout.shifted {
+        transform: translateX(0.1rem); /* Match sidebar width */
+    }
     aside {
         position: fixed;
-        left: -260px;
+        left: -350px;
         top: 0;
         height: 100vh;
+        width: 250px;
         transition: left 0.3s ease;
         z-index: 999;
     }
@@ -134,7 +145,8 @@
     }
 
     main {
-        padding: 1rem;
+        flex: 1;
+        padding: 5rem;
     }
 }
     </style>
@@ -143,6 +155,7 @@
     <button id="toggleSidebar" class="sidebar-toggle">
         ☰
     </button>
+    <div class="layout">
     <aside>
         <img src="https://media.licdn.com/dms/image/v2/C4D03AQH3VDb0GQjtbA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1643048766195?e=1750291200&v=beta&t=Ot3_CKRu4QCKw24vlhU0s4-kiVU6seGArjfF6V0imNs" alt="Author picture">
         <h2>Hocine Mahmoudi</h2>
@@ -193,13 +206,16 @@
           
         </ul>
       </main>
+    </div>
       <script>
-            const toggleBtn = document.getElementById('toggleSidebar');
-            const sidebar = document.querySelector('aside');
-        
-            toggleBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('show');
-            });
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.querySelector('aside');
+        const layout = document.querySelector('.layout');
+    
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            layout.classList.toggle('shifted');
+        });
         </script>
 </body>
 </html>
