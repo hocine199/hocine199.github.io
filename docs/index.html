@@ -3,7 +3,7 @@
 <html lang="de"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>ReinTeam - B2B Textilreinigungsservice</title>
+<title>ReinTeam</title>
 <link rel="icon" type="image/png" href="Reinteam.png">
 <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
@@ -193,7 +193,11 @@
 
   
 <img height="25" width="60" src="Reinteam.png"/>
-<h2 class="text-xl font-bold text-gray-900 dark:text-white">Reinteam Hamburg</h2>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">
+  Reinteam<br/>
+  <span class="text-sm font-normal block">Reinheit ist Teamarbeit</span>
+</h2>
+
 </div>
 <nav class="hidden md:flex items-center gap-8">
 <!-- <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#home">Startseite</a> -->
@@ -205,15 +209,37 @@
 <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#faq">FAQ</a>
 <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Kontakt</a>
 </nav>
-<div class="flex items-center gap-4">
-<a class="cta-button hidden lg:inline-block bg-primary text-white text-sm font-bold py-2.5 px-6 rounded-lg" href="#contact">
-                Jetzt Anfragen
-              </a>
-<button class="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
+
+  <!-- CTA + Hamburger -->
+  <div class="flex items-center gap-4">
+    <a class="cta-button hidden lg:inline-block bg-primary text-white text-sm font-bold py-2.5 px-6 rounded-lg hover:bg-primary-dark transition-colors" href="#contact">
+      Jetzt Anfragen
+    </a>
+
+    <!-- Hamburger -->
+<!-- Hamburger button -->
+    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+    </button>
+  </div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-gray-100 dark:bg-gray-800 shadow-lg absolute top-full left-0 w-full z-50">
+  <ul class="flex flex-col p-4 space-y-3">
+    <li><a href="#benefits" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Vorteile</a></li>
+    <li><a href="#industries" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Branchen</a></li>
+    <li><a href="#loyalty" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Kundenkarte</a></li>
+    <li><a href="#about" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Über uns</a></li>
+    <li><a href="#faq" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">FAQ</a></li>
+    <li><a href="#contact" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Kontakt</a></li>
+  </ul>
+</div>
+
+
+
+
 </div>
 </div>
 </div>
@@ -1018,5 +1044,17 @@ gebuchten Aufladungsbetrag aufladen und Ihnen hierzu eine Rechnung per E-Mail zu
       .catch(() => alert("Fehler beim Senden. Bitte erneut versuchen."));
   }
 </script>
+<script>
+const btn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
+const lines = btn.querySelectorAll('span');
 
+btn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+  // Animate hamburger into X
+  lines[0].classList.toggle('rotate-45 translate-y-2');
+  lines[1].classList.toggle('opacity-0');
+  lines[2].classList.toggle('-rotate-45 -translate-y-2');
+});
+</script>
 </body></html>
