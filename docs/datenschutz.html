@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+<html lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReinTeam</title>
+<link rel="icon" type="image/png" href="Reinteam.png">
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#607AFB", "background-light": "#f5f6f8", "background-dark": "#0f1323"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+      .form-input {
+        --tw-ring-color: transparent;
+      }
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .fade-in {
+        animation-name: fadeIn;
+        animation-duration: 1.5s;
+      }
+      .slide-up {
+        animation-name: slideUp;
+        animation-duration: 1.2s;
+      }
+      .cta-button {
+        transition: all 0.3s ease-in-out;
+      }
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        opacity: 0.95;
+      }
+      .icon-container:hover .icon-animated {
+          animation: bounce 0.6s ease-in-out;
+      }
+      .industry-card:hover .icon-animated-industry {
+          animation: rotate-gently 0.8s ease-in-out;
+      }
+      @keyframes bounce {
+          0%, 100% {
+              transform: translateY(0);
+          }
+          50% {
+              transform: translateY(-8px);
+          }
+      }
+      @keyframes rotate-gently {
+          0% {
+              transform: rotate(0deg) scale(1);
+          }
+          50% {
+              transform: rotate(15deg) scale(1.1);
+          }
+          100% {
+              transform: rotate(0deg) scale(1);
+          }
+      }
+      .form-group:invalid .error-message {
+          display: block;
+      }
+      .form-input:invalid {
+          border-color: #ef4444;
+      }
+      .animate-on-scroll.delay-1 { animation-delay: 0.2s; }
+      .animate-on-scroll.delay-2 { animation-delay: 0.4s; }
+      .animate-on-scroll.delay-3 { animation-delay: 0.6s; }
+      .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      @keyframes fadeInWord {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animated-headline span {
+        display: inline-block;
+        opacity: 0;
+        animation: fadeInWord 0.8s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+       @keyframes count-up {
+        from {
+            transform: translateY(0.5em);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+      }
+      .counter-animation {
+        display: inline-block;
+        animation: count-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        opacity: 0;
+      }
+       @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(26, 122, 239, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 20px 10px rgba(26, 122, 239, 0);
+        }
+      }
+      .kundenkarte-glow {
+        animation: pulse-glow 3s infinite;
+      }
+      @keyframes benefit-reveal {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      .benefit-item {
+        opacity: 0;
+        animation: benefit-reveal 0.8s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      @keyframes progress-bar-fill {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+      }
+      .progress-bar-fill {
+        animation: progress-bar-fill 2s 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      .process-step {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .process-step:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      }
+      .process-step .icon-wrapper {
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .process-step:hover .icon-wrapper {
+        transform: rotateY(180deg);
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .connector-line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 2s 0.5s ease-out forwards;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative w-full overflow-x-hidden">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-20 items-center justify-between">
+<div class="flex items-center gap-3">
+
+  
+<img height="25" width="60" src="Reinteam.png"/>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">
+  Reinteam<br/>
+  <span class="text-sm font-normal block">Reinheit ist Teamarbeit</span>
+</h2>
+
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="index.html">Startseite</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#benefits">Vorteile</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#industries">Branchen</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#loyalty">Kundenkarte</a>
+<!-- <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#testimonials">Referenzen</a> -->
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#about">Über uns</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#faq">FAQ</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Kontakt</a>
+</nav>
+
+  <!-- CTA + Hamburger -->
+  <div class="flex items-center gap-4">
+    <a class="cta-button hidden lg:inline-block bg-primary text-white text-sm font-bold py-2.5 px-6 rounded-lg hover:bg-primary-dark transition-colors" href="#contact">
+      Jetzt Anfragen
+    </a>
+
+    <!-- Hamburger -->
+<!-- Hamburger button -->
+    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+    </button>
+  </div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-gray-100 dark:bg-gray-800 shadow-lg absolute top-full left-0 w-full z-50">
+  <ul class="flex flex-col p-4 space-y-3">
+    <li><a href="index.html" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Startseite</a></li>
+
+    <li><a href="#benefits" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Vorteile</a></li>
+    <li><a href="#industries" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Branchen</a></li>
+    <li><a href="#loyalty" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Kundenkarte</a></li>
+    <li><a href="#about" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Über uns</a></li>
+    <li><a href="#faq" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">FAQ</a></li>
+    <li><a href="#contact" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Kontakt</a></li>
+  </ul>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-24 pt-40">
+
+<section class="shadow-sm border border-gray-200 dark:border-gray-800 py-16 sm:py-24 bg-white dark:bg-background-dark rounded-xl" id="industries">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Datenschutzerklärung</h1>
+
+    <!-- 1. Allgemeine Hinweise -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">1. Allgemeine Hinweise</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        Wir freuen uns über Ihren Besuch auf unserer Website und Ihr Interesse an unseren Dienstleistungen.
+        Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Diese Datenschutzerklärung informiert Sie über Art, Umfang und Zweck der Erhebung, Verarbeitung und Nutzung personenbezogener Daten auf unserer Website.
+      </p>
+    </div>
+
+    <!-- 2. Verantwortlicher -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">2. Verantwortlicher</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        Verantwortlicher für die Datenverarbeitung auf dieser Website:<br>
+        <strong>Reinteam Hamburg</strong><br>
+        Adresse: Hauptstr 32, 25469 Halstenbek<br>
+        E-Mail: moin@reinteam.hamburg<br>
+        Telefon: 04101 43910
+      </p>
+    </div>
+
+    <!-- 3. Cookies und Consent -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">3. Cookies und Consent</h2>
+      <p class="text-gray-700 dark:text-gray-300 mb-2">
+        Unsere Website verwendet keine Cookies außer techschnisch notwendige Cookies.
+      </p>
+      <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+        <li><strong>Technisch notwendige Cookies:</strong> Immer gesetzt.</li>
+        <li><strong>Einwilligungspflichtige Cookies:</strong> Gibt's nicht</li>
+        <!-- <li>Einwilligung kann jederzeit über das Cookie-Consent-Tool widerrufen werden.</li> -->
+      </ul>
+    </div>
+
+    <!-- 4. Retargeting / Remarketing & Conversion Tracking -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">4. Retargeting / Remarketing & Conversion Tracking (Gibt's nicht)</h2>
+
+      <!-- <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">4.1 Facebook-Pixel (erweiterter Datenabgleich)</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Meta Platforms Ireland Ltd., Dublin, Irland<br>
+          Zweck: Effektivere Facebook-Werbung, Erstellung von Custom Audiences, Messung von Conversions.<br>
+          Daten werden nur mit Ihrer Einwilligung verarbeitet. Daten können in die USA übertragen werden (EU-US Data Privacy Framework).<br>
+          <a href="https://www.facebook.com/about/privacy/" class="text-blue-600 dark:text-blue-400 underline" target="_blank">Facebook Datenschutz</a>
+        </p>
+      </details> -->
+
+      <!-- <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">4.2 Google Ads Remarketing</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Google Ireland Limited, Dublin, Irland<br>
+          Zweck: Interessenbasierte Werbung, Erstellung von Zielgruppen.<br>
+          Datenverarbeitung nur nach Einwilligung; Widerruf jederzeit möglich.<br>
+          <a href="https://policies.google.com/technologies/partner-sites" class="text-blue-600 dark:text-blue-400 underline" target="_blank">Google Datenschutz</a>
+        </p>
+      </details> -->
+
+      <!-- <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">4.3 Google Ads Conversion-Tracking</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Google Ireland Limited, Dublin, Irland<br>
+          Zweck: Erfolgskontrolle von Werbekampagnen.<br>
+          Cookies werden nach Klick auf Ads gesetzt, nur mit Einwilligung.<br>
+          <a href="https://policies.google.com/technologies/partner-sites" class="text-blue-600 dark:text-blue-400 underline" target="_blank">Details</a>
+        </p>
+      </details> -->
+    </div>
+
+    <!-- 5. Seitenfunktionalitäten -->
+    <!-- <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">5. Seitenfunktionalitäten</h2>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">5.1 Vimeo</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Vimeo, LLC, New York, USA<br>
+          Zweck: Anzeige und Wiedergabe von Videos.<br>
+          Daten werden nur nach Einwilligung verarbeitet; Datenübermittlung in die USA erfolgt nach Standardvertragsklauseln.
+        </p>
+      </details>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">5.2 Facebook Connect</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Meta Platforms Ireland Ltd., Dublin, Irland<br>
+          Zweck: Single-Sign-On-Funktion.<br>
+          Daten werden nur nach Einwilligung verarbeitet; Datenübermittlung in die USA erfolgt nach EU-US Data Privacy Framework.
+        </p>
+      </details>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">5.3 Google Sign-In</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Google Ireland Limited, Dublin, Irland<br>
+          Zweck: Single-Sign-On-Funktion.<br>
+          Daten werden nur nach Einwilligung verarbeitet; Datenübermittlung in die USA erfolgt nach EU-US Data Privacy Framework.
+        </p>
+      </details>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">5.4 Login With Amazon</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Amazon EU S.a.r.l., Luxemburg<br>
+          Zweck: Single-Sign-On-Funktion.<br>
+          Daten werden nur nach Einwilligung verarbeitet; Datenübermittlung in die USA erfolgt nach EU-US Data Privacy Framework.
+        </p>
+      </details>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">5.5 ShopVote-Grafiken</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Blickreif GmbH, München, Deutschland<br>
+          Zweck: Anzeige externer Kundenbewertungen/Gütezeichen.<br>
+          Verarbeitung erfolgt auf Basis unseres berechtigten Interesses.
+        </p>
+      </details>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">5.6 & 5.7 Bewerbungen</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Bewerbungen per E-Mail oder Online-Formular.<br>
+          Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Arbeitsvertragsanbahnung) und ggf. Art. 9 Abs. 2 lit. b / lit. h DSGVO (Gesundheitsdaten).<br>
+          Daten werden spätestens nach 6 Monaten gelöscht, sofern keine Einstellung erfolgt.
+        </p>
+      </details>
+    </div> -->
+
+    <!-- 6. Tools und Sonstiges -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">6. Tools und Sonstiges</h2>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">6.1 Lexoffice</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Anbieter: Haufe-Lexware GmbH & Co. KG, Freiburg, Deutschland<br>
+          Zweck: Finanzbuchhaltung, automatisierte Rechnungserfassung.<br>
+          Verarbeitung auf Basis unseres berechtigten Interesses.
+        </p>
+      </details>
+
+      <details class="mb-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <summary class="font-medium cursor-pointer text-gray-800 dark:text-gray-100">6.2 Cookie-Consent-Tool</summary>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Zweck: Einholung wirksamer Nutzereinwilligungen für Cookies.<br>
+          Cookies werden nur bei erteilter Einwilligung geladen.<br>
+          Verarbeitung personenbezogener Daten (z.B. IP) erfolgt auf Basis unseres berechtigten Interesses.
+        </p>
+      </details>
+    </div>
+
+    <!-- 7. Rechte des Betroffenen -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">7. Rechte des Betroffenen</h2>
+      <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-2">
+        <li>Auskunftsrecht gemäß Art. 15 DSGVO</li>
+        <li>Recht auf Berichtigung gemäß Art. 16 DSGVO</li>
+        <li>Recht auf Löschung gemäß Art. 17 DSGVO</li>
+        <li>Recht auf Einschränkung der Verarbeitung gemäß Art. 18 DSGVO</li>
+        <li>Recht auf Unterrichtung gemäß Art. 19 DSGVO</li>
+        <li>Recht auf Datenübertragbarkeit gemäß Art. 20 DSGVO</li>
+        <li>Recht auf Widerruf erteilter Einwilligungen gemäß Art. 7 Abs. 3 DSGVO</li>
+        <li>Recht auf Beschwerde gemäß Art. 77 DSGVO</li>
+      </ul>
+      <p class="text-gray-700 dark:text-gray-300">
+        Widerspruchsrecht bei Verarbeitung auf Basis berechtigter Interessen und Direktwerbung gemäß Art. 21 DSGVO.
+      </p>
+    </div>
+
+    <!-- 8. Dauer der Speicherung -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">8. Dauer der Speicherung personenbezogener Daten</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        Es werden keine personenbezogene Daten gespeichert.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+</main>
+<footer class="bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-3">
+<img height="25" width="30" src="Reinteam.png"/>
+
+
+<h2 class="text-lg font-bold text-gray-900 dark:text-white">Reinteam Hamburg</h2>
+</div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#benefits">Vorteile</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#industries">Branchen</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#loyalty">Kundenkarte</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#about">Über uns</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#faq">FAQ</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Kontakt</a>
+
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="allgemeine-geschaeftsbedingungen.html">AGB</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="widerruf.html">Widerruf</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="datenschutz.html">Datenschutz</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="impressum.html">Impressum</a>
+
+
+
+</nav>
+<p class="text-sm text-gray-500 dark:text-gray-400 text-center md:text-right">© 2025 Reinteam Hamburg. Alle Rechte vorbehalten.</p>
+</div>
+</div>
+</footer>
+</div>
+<script>
+  function calculateBonus() {
+    const topupAmountInput = document.getElementById('topup-amount');
+    const bonusCreditEl = document.getElementById('bonus-credit');
+    const totalCreditEl = document.getElementById('total-credit');
+    const bonusInfoEl = document.getElementById('bonus-info');
+    const progressBar = document.getElementById('progress-bar');
+    const topupAmount = parseFloat(topupAmountInput.value) || 0;
+    const bonusThreshold = 200;
+    let bonus = 0;
+    let total = topupAmount;
+    if (topupAmount >= bonusThreshold) {
+      bonus = topupAmount * 0.20;
+      total = topupAmount + bonus;
+      const bonusFormatted = bonus.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+      bonusInfoEl.textContent = `Herzlichen Glückwunsch! Sie erhalten ${bonusFormatted} Bonus!`;
+      bonusInfoEl.classList.remove('text-gray-500', 'dark:text-gray-400');
+      bonusInfoEl.classList.add('text-primary', 'font-semibold');
+    } else {
+      const remaining = bonusThreshold - topupAmount;
+      const remainingFormatted = remaining.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+      if (topupAmount > 0) {
+        bonusInfoEl.textContent = `Laden Sie noch ${remainingFormatted} auf, um den 20% Bonus zu erhalten.`;
+      } else {
+        bonusInfoEl.textContent = `Ab ${bonusThreshold.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })} Aufladung erhalten Sie 20% Bonus!`;
+      }
+      bonusInfoEl.classList.add('text-gray-500', 'dark:text-gray-400');
+      bonusInfoEl.classList.remove('text-primary', 'font-semibold');
+    }
+    bonusCreditEl.textContent = bonus.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+    totalCreditEl.textContent = total.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+    let progress = Math.min((topupAmount / bonusThreshold) * 100, 100);
+    progressBar.style.width = `${progress}%`;
+  }
+  function setTopup(amount) {
+      const topupAmountInput = document.getElementById('topup-amount');
+      topupAmountInput.value = amount;
+      calculateBonus();
+  }
+  const animationObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        if (!entry.target.classList.contains('progress-bar-fill')) {
+           observer.unobserve(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    animationObserver.observe(el);
+  });
+  const loyaltySectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const progressBar = entry.target.querySelector('.progress-bar-fill');
+              if (progressBar) {
+                  progressBar.style.animation = 'none';
+                  progressBar.offsetHeight;progressBar.style.animation = null; 
+                  progressBar.classList.add('progress-bar-fill');
+              }
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 });
+  const loyaltySection = document.getElementById('loyalty');
+  if (loyaltySection) {
+      loyaltySectionObserver.observe(loyaltySection);
+  }
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counterElement = entry.target;
+        const targetNumber = parseInt(counterElement.textContent, 10);
+        counterElement.style.opacity = 0; // Hide it initially
+        counterElement.textContent = '0'; // Start from 0
+        // Wrap each digit in a span for individual animation
+        const animatedCounter = document.createElement('span');
+        animatedCounter.textContent = targetNumber;
+        animatedCounter.classList.add('counter-animation');
+        counterElement.parentNode.replaceChild(animatedCounter, counterElement);
+        let startTimestamp = null;
+        const duration = 1500; 
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentNumber = Math.floor(progress * targetNumber);
+            animatedCounter.textContent = currentNumber;
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                 animatedCounter.textContent = targetNumber;
+            }
+        };
+        window.requestAnimationFrame(step);
+        observer.unobserve(counterElement);
+      }
+    });
+  }, { threshold: 0.8 });
+  const counter = document.getElementById('counter');
+  if(counter) {
+      counterObserver.observe(counter);
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    const headline = "Ihr Partner für Professionelle Textilpflege";
+    const animatedHeadline = document.querySelector('.animated-headline');
+    if (animatedHeadline) {
+        const words = headline.split(' ');
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.textContent = word; //word + '\u00A0';
+            span.style.marginRight = '0.4em';
+            span.style.animationDelay = `${index * 0.15}s`;
+            animatedHeadline.appendChild(span);
+        });
+    }
+    const mapIframe = document.getElementById('gmap_canvas');
+    const zoomButtons = document.querySelectorAll('.map-zoom-btn');
+    let currentZoom = 12;
+    const updateMapZoom = () => {
+        if (!mapIframe) return;
+        const src = mapIframe.src;
+        // Basic regex to find and replace zoom level (z=)
+        const newSrc = src.replace(/!1d(\d+\.?\d*)/, `!1d${currentZoom}`);
+        if(mapIframe.src !== newSrc) {
+            mapIframe.src = newSrc;
+        }
+    };
+    zoomButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const zoomChange = parseInt(button.dataset.zoom);
+            currentZoom = Math.max(8, Math.min(20, currentZoom + zoomChange)); // Clamp zoom level
+            const mapSrc = mapIframe.getAttribute('src');
+            let newSrc = mapSrc.replace(/!1m3!1d\d+\.\d+!2d\d+\.\d+!3d\d+\.\d+/, `!1m3!1d${(1 / Math.pow(2, currentZoom - 12)) * 85339}!2d9.789124707611685!3d53.64295861189417`);
+             newSrc = newSrc.replace(/(?<=!4f)13.1/, `!4f${Math.max(1, 13.1 + (zoomChange * 2))}`);
+            mapIframe.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75549.49969440626!2d9.789124707611685!3d53.64295861189417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b227a14c623583%3A0x42636a5124b4280!2sHalstenbek%2C%20Germany!5e${currentZoom-1}!3m2!1sen!2sus!4v1689264879007!5m2!1sen!2sus`
+            let newSrcTest = mapIframe.src.replace(/5e\d+/, `5e${currentZoom}`);
+             if (newSrcTest.match(/5e\d+/g).length > 1) {
+                newSrcTest = newSrcTest.replace(/5e\d+!/, `5e${currentZoom}!`);
+             }
+             mapIframe.src = newSrcTest;
+        });
+    });
+  });
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("QaEdgW84RUkw1pdyX");
+  })();
+
+  function sendEmail(event) {
+    event.preventDefault();
+    emailjs.sendForm("service_a1eudh9", "template_h9wwtaa", event.target)
+      .then(() => alert("Nachricht erfolgreich gesendet!"))
+      .catch(() => alert("Fehler beim Senden. Bitte erneut versuchen."));
+  }
+</script>
+<script>
+const btn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
+const lines = btn.querySelectorAll('span');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+  // Animate hamburger into X
+  lines[0].classList.toggle('rotate-45 translate-y-2');
+  lines[1].classList.toggle('opacity-0');
+  lines[2].classList.toggle('-rotate-45 -translate-y-2');
+});
+</script>
+</body></html>
