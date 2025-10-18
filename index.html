@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+<html lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReinTeam</title>
+<link rel="icon" type="image/png" href="Reinteam.png">
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#607AFB", "background-light": "#f5f6f8", "background-dark": "#0f1323"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+      .form-input {
+        --tw-ring-color: transparent;
+      }
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .fade-in {
+        animation-name: fadeIn;
+        animation-duration: 1.5s;
+      }
+      .slide-up {
+        animation-name: slideUp;
+        animation-duration: 1.2s;
+      }
+      .cta-button {
+        transition: all 0.3s ease-in-out;
+      }
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        opacity: 0.95;
+      }
+      .icon-container:hover .icon-animated {
+          animation: bounce 0.6s ease-in-out;
+      }
+      .industry-card:hover .icon-animated-industry {
+          animation: rotate-gently 0.8s ease-in-out;
+      }
+      @keyframes bounce {
+          0%, 100% {
+              transform: translateY(0);
+          }
+          50% {
+              transform: translateY(-8px);
+          }
+      }
+      @keyframes rotate-gently {
+          0% {
+              transform: rotate(0deg) scale(1);
+          }
+          50% {
+              transform: rotate(15deg) scale(1.1);
+          }
+          100% {
+              transform: rotate(0deg) scale(1);
+          }
+      }
+      .form-group:invalid .error-message {
+          display: block;
+      }
+      .form-input:invalid {
+          border-color: #ef4444;
+      }
+      .animate-on-scroll.delay-1 { animation-delay: 0.2s; }
+      .animate-on-scroll.delay-2 { animation-delay: 0.4s; }
+      .animate-on-scroll.delay-3 { animation-delay: 0.6s; }
+      .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      @keyframes fadeInWord {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animated-headline span {
+        display: inline-block;
+        opacity: 0;
+        animation: fadeInWord 0.8s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+       @keyframes count-up {
+        from {
+            transform: translateY(0.5em);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+      }
+      .counter-animation {
+        display: inline-block;
+        animation: count-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        opacity: 0;
+      }
+       @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(26, 122, 239, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 20px 10px rgba(26, 122, 239, 0);
+        }
+      }
+      .kundenkarte-glow {
+        animation: pulse-glow 3s infinite;
+      }
+      @keyframes benefit-reveal {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      .benefit-item {
+        opacity: 0;
+        animation: benefit-reveal 0.8s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      @keyframes progress-bar-fill {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+      }
+      .progress-bar-fill {
+        animation: progress-bar-fill 2s 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      .process-step {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .process-step:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      }
+      .process-step .icon-wrapper {
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .process-step:hover .icon-wrapper {
+        transform: rotateY(180deg);
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .connector-line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 2s 0.5s ease-out forwards;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative w-full overflow-x-hidden">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-20 items-center justify-between">
+<div class="flex items-center gap-3">
+
+  
+<img height="25" width="60" src="Reinteam.png"/>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">
+  Reinteam<br/>
+  <span class="text-sm font-normal block">Reinheit ist Teamarbeit</span>
+</h2>
+
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="index.html">Startseite</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="it-beratung.html">IT Beratung</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#benefits">Vorteile</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#industries">Branchen</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#loyalty">Kundenkarte</a>
+<!-- <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#testimonials">Referenzen</a> -->
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#about">Über uns</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#faq">FAQ</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Kontakt</a>
+</nav>
+
+  <!-- CTA + Hamburger -->
+  <div class="flex items-center gap-4">
+    <a class="cta-button hidden lg:inline-block bg-primary text-white text-sm font-bold py-2.5 px-6 rounded-lg hover:bg-primary-dark transition-colors" href="#contact">
+      Jetzt Anfragen
+    </a>
+
+    <!-- Hamburger -->
+<!-- Hamburger button -->
+    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+      <span class="block w-6 h-0.5 bg-current transform transition duration-300"></span>
+    </button>
+  </div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-gray-100 dark:bg-gray-800 shadow-lg absolute top-full left-0 w-full z-50">
+  <ul class="flex flex-col p-4 space-y-3">
+    <li><a href="it-beratung.html" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">IT Beratung</a></li>
+    <li><a href="#benefits" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Vorteile</a></li>
+    <li><a href="#industries" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Branchen</a></li>
+    <li><a href="#loyalty" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Kundenkarte</a></li>
+    <li><a href="#about" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Über uns</a></li>
+    <li><a href="#faq" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">FAQ</a></li>
+    <li><a href="#contact" class="block text-gray-700 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors">Kontakt</a></li>
+  </ul>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-4 pt-40">
+<section class="sm:mt-24 animate-on-scroll fade-in relative min-h-[60vh] flex items-center justify-center text-center text-white rounded-xl overflow-hidden parallax" id="home" style='background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), 
+url("Blue Geometric Laundry Service Facebook Post.png");
+   '>
+<div class="z-10 flex flex-col items-center gap-6 max-w-3xl px-4">
+<h1 class="animated-headline text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight"></h1>
+ <p class="animate-on-scroll slide-up delay-1 text-lg sm:text-xl text-gray-200" style="animation-duration: 1.2s; animation-delay: 0.8s;">Zuverlässige und effiziente Textilreinigungslösungen für Unternehmen in Hamburg und Umgebung.</p>
+ <a class="animate-on-scroll slide-up delay-2 cta-button bg-primary text-white text-base font-bold py-3 px-8 rounded-lg" href="#contact" style="animation-duration: 1.2s; animation-delay: 1s;">
+              Kostenloses Angebot anfordern
+            </a> 
+</div>
+</section>
+<section class="mt-12 py-6 sm:py-4" id="benefits">
+<div class="animate-on-scroll slide-up text-center max-w-3xl mx-auto mb-12">
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Vorteile für Firmenkunden</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Effizient, zuverlässig und auf Ihre Bedürfnisse zugeschnitten.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="animate-on-scroll slide-up icon-container bg-white dark:bg-background-dark p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 flex flex-col items-center text-center">
+<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full mb-4">
+<svg class="h-10 w-10 text-primary icon-animated" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M247.42,117l-14-35A15.93,15.93,0,0,0,218.58,72H184V64a8,8,0,0,0-8-8H24A16,16,0,0,0,8,72V184a16,16,0,0,0,16,16H41a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,247.42,117ZM184,88h34.58l9.6,24H184ZM24,72H168v64H24ZM72,208a16,16,0,1,1,16-16A16,16,0,0,1,72,208Zm81-24H103a32,32,0,0,0-62,0H24V152H168v12.31A32.11,32.11,0,0,0,153,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,184,208Zm48-24H215a32.06,32.06,0,0,0-31-24V128h48Z"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Abhol- &amp; Lieferservice</h3>
+<p class="text-gray-600 dark:text-gray-400">Direkt vor Ort oder bequem per DHL – immer pünktlich und zuverlässig.</p>
+</div>
+<div class="animate-on-scroll slide-up delay-1 icon-container bg-white dark:bg-background-dark p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 flex flex-col items-center text-center">
+<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full mb-4">
+<svg class="h-10 w-10 text-primary icon-animated" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Express-Reinigung</h3>
+<p class="text-gray-600 dark:text-gray-400">Schnelle Bearbeitung zur Minimierung von Ausfallzeiten.</p>
+</div>
+<div class="animate-on-scroll slide-up delay-2 icon-container bg-white dark:bg-background-dark p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 flex flex-col items-center text-center">
+<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full mb-4">
+<svg class="h-10 w-10 text-primary icon-animated" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,77.66l-96-96a8,8,0,0,0-11.32,0l-96,96a8,8,0,0,0,11.32,11.32L128,2.66l90.34,90.34a8,8,0,0,0,11.32-11.32ZM128,104a60,60,0,1,0,60,60A60.07,60.07,0,0,0,128,104Zm0,104a44,44,0,1,1,44-44A44.05,44.05,0,0,1,128,208Z"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Höchste Qualität</h3>
+<p class="text-gray-600 dark:text-gray-400">Makellose Sauberkeit und schonende Pflege Ihrer Textilien.</p>
+</div>
+</div>
+</section>
+<section class="sm:mb-6 sm:mt-6 sm:py-4">
+<div class="animate-on-scroll slide-up bg-primary/10 dark:bg-primary/20 text-center py-16 px-4 sm:px-6 lg:px-8 rounded-xl">
+<p class="mt-4 text-lg text-black-600 dark:text-black-600 max-w-2xl mx-auto">Mit unserer deutschlandweiten Versandreinigung können Sie unsere professionelle Textilreinigung deutschlandweit per Paketversand  in Anspruch nehmen.</p>
+<div class="mt-8">
+</div>
+</div>
+</section>
+
+<section class="mb-16 sm:mb-24 shadow-sm border border-gray-200 dark:border-gray-800 border-b-0 py-10 sm:py-10 bg-white dark:bg-background-dark rounded-xl" id="loyalty">
+<div class="sm:p-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-flex bg-white dark:bg-background-dark">
+<div class="animate-on-scroll slide-up relative">
+<div class="kundenkarte-glow rounded-xl">
+<img alt="Kundenkarte der Textilpflege Halstenbek" class="w-full h-full object-cover rounded-xl shadow-2xl transition-transform duration-500 ease-in-out hover:scale-120" src="Screenshot 2025-10-16 at 16-13-45 Halstenbek 1 - Business Card (US).png"/>
+</div>
+</div>
+<div class="animate-on-scroll slide-up delay-1 max-w-xl px-4 md:px-0">
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Profitieren Sie mit unserer Kundenkarte</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Exklusive Vorteile für unsere treuen Geschäftskunden. Sichern Sie sich jetzt Ihre persönliche Kundenkarte und genießen Sie zahlreiche Vergünstigungen.</p>
+<div class="mt-8 bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800" id="bonus-calculator">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Bonus-Rechner</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="topup-amount">Aufladebetrag (€)</label>
+<div class="relative flex items-center gap-2 mt-1">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-400">€</span>
+<input class="form-input w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 focus:border-primary focus:ring-primary rounded-lg pl-8" id="topup-amount" min="1" oninput="calculateBonus()" placeholder="z.B. 200" type="number"/>
+<button class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-lg text-sm whitespace-nowrap" onclick="setTopup(200)">200 €</button>
+<button class="bg-primary/20 text-primary font-semibold px-4 py-2 rounded-lg text-sm whitespace-nowrap" onclick="setTopup(400)">400 €</button>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2" id="bonus-info">Ab 200€ Aufladung erhalten Sie 20% Bonus!</p>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-primary/10 dark:bg-primary/20">
+<div>
+<p class="text-sm text-gray-600 dark:text-gray-300">Ihr Bonus</p>
+<p class="text-xl font-bold text-primary" id="bonus-credit">0,00 €</p>
+</div>
+<div class="text-right">
+<p class="text-sm text-gray-600 dark:text-gray-300">Gesamtwert</p>
+<p class="text-xl font-bold text-gray-900 dark:text-white" id="total-credit">0,00 €</p>
+</div>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full transition-all duration-500" id="progress-bar" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<ul class="mt-6 space-y-4">
+<li class="flex items-start benefit-item" style="animation-delay: 0.4s;">
+<svg class="w-6 h-6 text-primary flex-shrink-0 mr-3 mt-1" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
+</svg>
+<div>
+<strong class="font-semibold text-gray-800 dark:text-white">20% Bonus-Guthaben:</strong> Laden Sie Ihre Karte mit einem Betrag <span class="text-primary font-bold">ab 200 €</span> auf und erhalten Sie automatisch <span class="text-primary font-bold">20% des Aufladebetrags geschenkt</span>.
+                            <br/><span class="text-sm text-gray-500 dark:text-gray-400">Beispiel: 200 € aufladen + 40 € Bonus = 240 € Guthaben.</span>
+<br/><span class="text-sm text-gray-500 dark:text-gray-400">Beispiel: 400 € aufladen + 80 € Bonus = 480 € Guthaben.</span>
+</div>
+</li>
+<li class="flex items-start benefit-item" style="animation-delay: 0.6s;">
+<svg class="w-6 h-6 text-primary flex-shrink-0 mr-3 mt-1" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
+</svg>
+<p class="text-gray-600 dark:text-gray-400"><strong class="font-semibold text-gray-800 dark:text-white">Volle Kostenkontrolle &amp; planbare Ausgaben:</strong> Behalten Sie Ihr Budget immer im Blick.</p>
+</li>
+<li class="flex items-start benefit-item" style="animation-delay: 0.8s;">
+<svg class="w-6 h-6 text-primary flex-shrink-0 mr-3 mt-1" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
+</svg>
+<p class="text-gray-600 dark:text-gray-400"><strong class="font-semibold text-gray-800 dark:text-white">Zeitersparnis:</strong> Beschleunigen Sie den Bezahlvorgang und vereinfachen Sie Ihre Buchhaltung. Über jede Kundenkarte erhalten Sie eine ordentliche Rechnung mit ausgewiesener MwSt.</p>
+</li>
+<li class="flex items-start benefit-item" style="animation-delay: 0.8s;">
+<svg class="w-6 h-6 text-primary flex-shrink-0 mr-3 mt-1" fill="currentColor" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
+</svg>
+<p class="text-gray-600 dark:text-gray-400"><strong class="font-semibold text-gray-800 dark:text-white">Zahlungsmethode:</strong> Kundenkarte kann bequem per Rechnung, Paypal, Kreditkarte, bar oder EC bezahlt werden.</p>
+</li>
+</ul>
+<a class="cta-button inline-block mt-8 bg-primary text-white text-base font-bold py-3 px-8 rounded-lg" href="#contact">
+Jetzt Kundenkarte anfragen
+</a>
+</div>
+</div>
+<div class="mt-16 sm:mt-24 px-4">
+<div class="animate-on-scroll slide-up max-w-4xl mx-auto">
+<h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">Fragen &amp; Antworten zur Kundenkarte</h3>
+<div class="space-y-4">
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Wer kann die Kundenkarte beantragen?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Die Kundenkarte ist exklusiv für unsere Firmenkunden verfügbar. Sie richtet sich an Unternehmen, die unsere Dienstleistungen regelmäßig in Anspruch nehmen möchten.</p>
+</div>
+</details>
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Wie wird der Bonus auf mein Guthaben angewendet?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Der 20% Bonus wird automatisch gutgeschrieben, sobald Sie Ihre Kundenkarte mit einem Betrag von 200 € oder mehr aufladen. Das Bonusguthaben wird Ihrem Konto sofort hinzugefügt und kann für alle unsere Reinigungsdienstleistungen verwendet werden.</p>
+</div>
+</details>
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Gibt es weitere Bedingungen für den Bonus?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Der Bonus gilt für jede einzelne Aufladung ab 200 €. Er ist nicht mit anderen Rabattaktionen kombinierbar. Das Guthaben (inkl. Bonus) verfällt nicht und kann jederzeit für unsere Dienstleistungen eingelöst werden.</p>
+</div>
+</details>
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Was kostet eine Kundenkarte?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Die Kundenkarte an sich ist kostenfrei und wird ohne Gebühren an die Kunden herausgegeben. Die Aufladung an sich ist frei, ab einer Aufladung von 200 € geben wir nochmals 40 € hinzu, sodass dies einem Gesamtwert von 240 € entspricht.</p>
+</div>
+</details>
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Wie profitieren Firmen von unserer Kundenkarte und dem Lieferservice?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Wir beliefern Firmen und Büros mit unserem Lieferservice. Hierfür ist unsere Kundenkarte das ideale Zahlungsmittel. Die Kundenkarte wird aufgeladen, wir schreiben direkt einen Bonus der Kundenkarte gut und alle weiteren Abbuchungen erfolgen bargeldlos über die Kundenkarte.</p>
+</div>
+</details>
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Warum ist unsere Kundenkarte perfekt für Ärzte, Apotheken und Praxen?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Fast alle unserer Ärzt:innen, Apotheken, Praxen und Labore haben auf unsere Kundenkarte umgestellt. Die Aufladung der Kundenkarte erfolgt per Rechnung und der Lieferservice bringt zu jeder Rücklieferung einen Beleg mit aktuellem Stand der Kundenkarte mit. Somit erhalten Sie volle Kontrolle.</p>
+</div>
+</details>
+
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Warum ist unsere Kundenkarte perfekt für Hotels und Gastronomie?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Gastronomie und Hotels nutzen unsere Kundenkarte, um eigene Garderobe und hausinterne Textilien reinigen zu lassen, aber auch um Kundenaufträge darüber reinigen zu lassen. Die Gastronomie wickelt alle Aufträge über unsere Kundenkarte ab, auch die Küchentücher, Kochhosen und Kochjacken.</p>
+</div>
+</details>
+
+
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Kartennutzung und Sicherheit?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Ihr Guthaben und Ihre persönlichen Daten sind aus Sicherheitsgründen nicht auf der Kundenkarte hinterlegt, sondern immer nur in unserem System! Dies ermöglicht uns bei Kartenverlust, Ihr altes Guthaben, Ihre Historie und Ihre persönlichen Daten unkompliziert auf eine neue Karte zu transferieren. </p>
+</div>
+</details>
+
+<details class="group bg-background-light dark:bg-gray-900 p-5 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="text-md font-medium text-gray-800 dark:text-white">Wie werden meine Datengeschützt?</h4>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-3 text-gray-600 dark:text-gray-400">
+<p>Die Daten für die Kundenkarte werden nicht auf der Kundenkarte selbst gespeichert, sondern separat und sicher in unserem System aufbewahrt. Die Daten beschränken sich auf Ihren Firmennamen, Ihre Adresse, Ihre Telefonnummer und Ihre Kartennummer. Wir speichern nur Daten, die wir im Rahmen unserer Geschäftsbeziehung von Ihnen erhalten haben und die für die Aufrechterhaltung dieser Beziehung erforderlich sind. Wir geben Ihre Daten nicht an Dritte weiter. Weitere Informationen zum Umgang mit personenbezogenen Daten finden Sie in unserer Datenschutzerklärung. Bei Fragen stehen wir Ihnen gerne zur Verfügung.</p>
+</div>
+</details>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="shadow-sm border border-gray-200 dark:border-gray-800 py-16 sm:py-24 bg-white dark:bg-background-dark rounded-xl" id="industries">
+  <div class="animate-on-scroll slide-up text-center max-w-3xl mx-auto mb-12 px-4">
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+      Branchenlösungen für Ihren Erfolg
+    </h2>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+      Jede Branche hat einzigartige Anforderungen. Wir bieten maßgeschneiderte Reinigungslösungen, 
+      die exakt auf die Bedürfnisse Ihres Unternehmens zugeschnitten sind.
+    </p>
+  </div>
+
+  <!-- ✅ Grid layout replaces the flex carousel -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4">
+
+
+    <!-- Card 1 -->
+    <div class="animate-on-scroll slide-up industry-card bg-background-light dark:bg-gray-900 p-8 rounded-xl flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:scale-105">
+      <div class="bg-primary/10 dark:bg-primary/20 p-5 rounded-full mb-6">
+        <i class="h-10 w-10 text-primary icon-animated-industry fa-solid fa-hotel text-blue-800 text-3xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Hotels &amp; Pensionen</h3>
+      <p class="text-gray-600 dark:text-gray-400">
+        Immer frische Bettwäsche &amp; makellose Handtücher für begeisterte Gäste und top Bewertungen.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="animate-on-scroll slide-up delay-1 industry-card bg-background-light dark:bg-gray-900 p-8 rounded-xl flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:scale-105">
+      <div class="bg-primary/10 dark:bg-primary/20 p-5 rounded-full mb-6">
+        <i class="h-10 w-10 text-primary icon-animated-industry fa-solid fa-stethoscope text-blue-800 text-3xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Arztpraxen &amp; Physiotherapien</h3>
+      <p class="text-gray-600 dark:text-gray-400">
+        Hygienisch reine Praxiswäsche, Kittel &amp; Handtücher für Patientensicherheit und ein professionelles Auftreten.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="animate-on-scroll slide-up delay-2 industry-card bg-background-light dark:bg-gray-900 p-8 rounded-xl flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:scale-105">
+      <div class="bg-primary/10 dark:bg-primary/20 p-5 rounded-full mb-6">
+        <i class="h-10 w-10 text-primary icon-animated-industry fa-solid fa-utensils text-blue-800 text-3xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Restaurants &amp; Cafés</h3>
+      <p class="text-gray-600 dark:text-gray-400">
+        Strahlend saubere Tischdecken, Servietten &amp; Kochbekleidung für ein perfektes Ambiente und zufriedene Gäste.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="animate-on-scroll slide-up delay-3 industry-card bg-background-light dark:bg-gray-900 p-8 rounded-xl flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:scale-105">
+      <div class="bg-primary/10 dark:bg-primary/20 p-5 rounded-full mb-6">
+        <i class="icon-animated-industry h-10 w-10 text-primary fa-solid fa-dumbbell text-blue-800 text-3xl"></i>
+
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Fitnessstudios &amp; Spas</h3>
+      <p class="text-gray-600 dark:text-gray-400">
+        Frische Handtücher und saubere Trainingsbekleidung für ein hygienisches und angenehmes Sporterlebnis.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- <section class="mt-16 sm:py-4" id="contracts">
+<div class="shadow-sm border border-gray-200 dark:border-gray-800 p-20 rounded-xl bg-white animate-on-scroll slide-up grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-8">
+<div class="text-center lg:text-left">
+<div class="flex items-center justify-center lg:justify-start gap-3 mb-2">
+<svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.22 2h-4.44a2 2 0 0 0-2 2v.77a2 2 0 0 1-1.11 1.79l-1.94.97a2 2 0 0 0-1.11 1.79V14a2 2 0 0 0 2 2h4.44a2 2 0 0 0 2-2v-.77a2 2 0 0 1 1.11-1.79l1.94-.97a2 2 0 0 0 1.11-1.79V4a2 2 0 0 0-2-2z"></path>
+<path d="M22 13.5V14a2 2 0 0 1-2 2h-4.44a2 2 0 0 1-2-2v-.77a2 2 0 0 0-1.11-1.79l-1.94-.97a2 2 0 0 1-1.11-1.79V8.5"></path>
+</svg>
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Individuelle Vertragsmodelle</h2>
+</div>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0">
+                        Jedes Unternehmen ist einzigartig. Deshalb bieten wir flexible Vertragsmodelle, die perfekt auf Ihre spezifischen Anforderungen und Ihr Budget zugeschnitten sind.
+</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="benefit-item bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line v1="12" v2="22.08" x1="12" y1="12" y2="22.08"></line>
+</svg>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white">Maßgeschneiderte Pakete</h3>
+</div>
+</div>
+<p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Wählen Sie nur die Dienstleistungen, die Sie wirklich benötigen.</p>
+</div>
+<div class="benefit-item bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-md hover:-translate-y-1" style="animation-delay: 0.2s;">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"></path>
+<path d="M20.89 12.23A9.91 9.91 0 0 0 12 4a9.91 9.91 0 0 0-8.89 8.23"></path>
+<path d="M3.11 11.77A9.91 9.91 0 0 0 12 20a9.91 9.91 0 0 0 8.89-8.23"></path>
+</svg>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white">Flexible Preisgestaltung</h3>
+</div>
+</div>
+<p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Faire Preise, die sich an Ihrem Wäscheaufkommen orientieren.</p>
+</div>
+<div class="benefit-item bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-md hover:-translate-y-1" style="animation-delay: 0.4s;">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+<polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white">Anpassbare Laufzeiten</h3>
+</div>
+</div>
+<p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Ob kurzfristig oder langfristig – wir haben die passende Laufzeit.</p>
+</div>
+</div>
+<div class="mt-8 text-center lg:text-left">
+<a class="cta-button inline-flex items-center gap-2 bg-primary text-white text-base font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group" href="#contact">
+                        Persönliches Angebot anfordern
+                        <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+</div>
+</div>
+<div class="p-10 animate-on-scroll slide-up delay-1 bg-background-light dark:bg-gray-900/50 p-8 rounded-2xl border border-gray-200 dark:border-gray-800">
+<img alt="Individuelle Vertragsmodelle" class="rounded-lg shadow-lg" src="Insurance Awareness Day Instagram Post.png"/>
+</div>
+</div>
+</section> -->
+
+<section class="mt-16 py-16 bg-background-light dark:bg-gray-950 bg-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    
+
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-12">
+      Individuelle Vertragsmodelle
+    </h2>
+    <p>
+      Jedes Unternehmen ist einzigartig. Deshalb bieten wir flexible Vertragsmodelle, die perfekt auf Ihre spezifischen Anforderungen und Ihr Budget zugeschnitten sind.
+    </p>
+    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div
+        class="benefit-item bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+      >
+        <div class="flex items-start sm:items-center gap-4 flex-wrap">
+          <div class="flex-shrink-0 bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+            <svg
+              class="h-6 w-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="12" x2="12" y2="22.08"></line>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-bold text-gray-900 dark:text-white break-words leading-snug">
+              Maßgeschneiderte Pakete
+            </h3>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Wählen Sie nur die Dienstleistungen, die Sie wirklich benötigen.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="benefit-item bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+      >
+        <div class="flex items-start sm:items-center gap-4 flex-wrap">
+          <div class="flex-shrink-0 bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+            <svg
+              class="h-6 w-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M20 21v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-bold text-gray-900 dark:text-white break-words leading-snug">
+              Flexible Preisgestaltung
+
+            </h3>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Faire Preise, die sich an Ihrem Wäscheaufkommen orientieren.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="benefit-item bg-background-light dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+      >
+        <div class="flex items-start sm:items-center gap-4 flex-wrap">
+          <div class="flex-shrink-0 bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+            <svg
+              class="h-6 w-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M12 8c-3.314 0-6 2.686-6 6 0 3.314 2.686 6 6 6s6-2.686 6-6c0-3.314-2.686-6-6-6z"></path>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="M4.93 4.93l1.41 1.41"></path>
+              <path d="M17.66 17.66l1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="M6.34 17.66l-1.41 1.41"></path>
+              <path d="M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-bold text-gray-900 dark:text-white break-words leading-snug">
+              Anpassbare Laufzeiten
+            </h3>
+          </div>
+        </div>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Ob kurzfristig oder langfristig – wir haben die passende Laufzeit.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sm:mt-6 sm:mb-10 py-16 sm:py-4">
+<div class="animate-on-scroll slide-up bg-primary/10 dark:bg-primary/20 text-center py-16 px-4 sm:px-6 lg:px-8 rounded-xl">
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Sonderangebot: Rabatt auf die erste Bestellung</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Testen Sie unsere Dienstleistungen und erhalten Sie einen großzügigen Rabatt auf Ihre erste Bestellung.</p>
+<div class="mt-8">
+<a class="cta-button bg-primary text-white text-base font-bold py-3 px-8 rounded-lg" href="#contact">
+                Ihren Rabatt sichern
+              </a>
+</div>
+</div>
+</section>
+<section class="shadow-sm border border-gray-200 dark:border-gray-800 py-16 sm:py-16 bg-white dark:bg-background-dark rounded-xl" id="faq">
+<div class="animate-on-scroll slide-up text-center max-w-3xl mx-auto mb-12 px-4">
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Häufig gestellte Fragen (FAQ)</h2>
+<p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Antworten auf häufig gestellte Fragen zu unseren Dienstleistungen.</p>
+</div>
+<div class="max-w-4xl mx-auto space-y-4 px-4">
+<details class="animate-on-scroll slide-up group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Welche Arten von Textilien reinigen Sie?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>Wir reinigen eine Vielzahl von Textilien für Unternehmen, darunter Bettwäsche, Handtücher, Tischdecken, Uniformen, Arbeitskleidung und vieles mehr. Bitte kontaktieren Sie uns, um Ihre spezifischen Bedürfnisse zu besprechen.</p>
+</div>
+</details>
+<details class="animate-on-scroll slide-up delay-1 group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Wie funktioniert Ihr Abhol- und Lieferservice?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>Unser Abhol- und Lieferservice ist darauf ausgelegt, Ihnen maximale Bequemlichkeit zu bieten.
+Wir vereinbaren feste Abhol- und Lieferzeiten, die optimal zu Ihrem Geschäftsbetrieb passen.
+Auf Wunsch stellen wir Ihnen auch passende Wäschesäcke zur Verfügung.
+
+Alternativ können Sie Ihre Textilien ganz einfach per DHL an uns versenden – wir kümmern uns um die fachgerechte Reinigung und senden alles sauber und ordentlich wieder zurück.</p>
+</div>
+</details>
+<details class="animate-on-scroll slide-up delay-2 group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Wie lange ist die Bearbeitungszeit?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>Die Standard-Bearbeitungszeit beträgt in der Regel 48 Stunden. Je nach Vereinbarung und Dringlichkeit sind auch schnellere Lieferungen möglich. Wir bemühen uns, die Ausfallzeiten für Ihr Unternehmen zu minimieren.</p>
+</div>
+</details>
+<details class="animate-on-scroll slide-up delay-3 group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Bieten Sie flexible Vertragsoptionen an?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>Ja, wir bieten flexible Vertragsoptionen, die auf die Bedürfnisse Ihres Unternehmens zugeschnitten sind. Wir können sowohl langfristige Verträge als auch bedarfsgerechte Dienstleistungen anbieten. Lassen Sie uns gemeinsam die beste Lösung für Sie finden.</p>
+</div>
+</details>
+
+<details class="animate-on-scroll slide-up delay-3 group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Kann das Guthaben auf der Kundenkarte ausgezahlt werden?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>Die Kundenkarte berechtigt die jeweiligen Besitzer; innen nicht zur Auszahlung des etwaigen auf der Kundenkarte
+befindlichen Guthabens. Eine Aufladung der Kundenkarte ist nur mit Beträgen von € 200, € 400, € 600 usw. möglich. </p>
+</div>
+</details>
+
+<details class="animate-on-scroll slide-up delay-3 group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Was geschieht, wenn das Guthaben für den Reinigungsauftrag nicht ausreicht?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>Sollte das Guthaben auf der Kundenkarte nicht ausreichend sein, um die beauftragten Arbeiten vollständig
+durchzuführen, werden wir die Kundenkarte für Sie erneut aufladen und den Reinigungsauftrag vollständig abschließen,
+was Ihnen sodann gesondert berechnet wird. Hierzu werden wir die Kundenkarte automatisch mit dem von Ihnen zuletzt
+gebuchten Aufladungsbetrag aufladen und Ihnen hierzu eine Rechnung per E-Mail zukommen lassen.</p>
+</div>
+</details>
+
+<details class="animate-on-scroll slide-up delay-3 group bg-background-light dark:bg-gray-900 p-6 rounded-lg">
+<summary class="flex items-center justify-between cursor-pointer">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white">Welche Versandkosten fallen an und wie funktioniert der DHL-Versand?</h3>
+<span class="text-primary transition-transform duration-300 group-open:rotate-45">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-400">
+<p>
+<ul class="space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+  <li class="flex items-start">
+    <i class="fa-solid fa-truck text-primary mr-3 mt-1"></i>
+    <span>Der <strong>Hin- & Rückversand ab 49 € Bestellwert</strong> ist <strong>kostenlos</strong>.</span>
+  </li>
+  <li class="flex items-start">
+    <i class="fa-solid fa-box text-primary mr-3 mt-1"></i>
+    <span>Unter 49 € Bestellwert fallen <strong>13,98 € Versandkosten</strong> an.</span>
+  </li>
+  <li class="flex items-start">
+    <i class="fa-solid fa-tag text-primary mr-3 mt-1"></i>
+    <span>Alternativ können <strong>Paketaufkleber</strong> für den Hin- & Rückversand genutzt werden – jeweils <strong>6,99 €</strong>.</span>
+  </li>
+  <li class="flex items-start">
+    <i class="fa-solid fa-recycle text-primary mr-3 mt-1"></i>
+    <span>Für alle Rücksendungen per Karton berechnen wir eine <strong>Verpackungspauschale von 4,99 €</strong>.  
+      Diese beinhaltet wiederverwendbare Kartonage, deren fachgerechte Entsorgung, Folie, Verpackung, Klebeband und die Beauftragung der Paketversendung.</span>
+  </li>
+  <li class="flex items-start">
+    <i class="fa-solid fa-envelope text-primary mr-3 mt-1"></i>
+    <span>Nach Ihrer Bestellung erhalten Sie ein <strong>DHL-Retouren-Label</strong>, eine <strong>Auftragsbestätigung</strong>  
+      und eine <strong>Rechnung per E-Mail</strong> zugesendet.</span>
+  </li>
+</ul>
+
+
+</p>
+</div>
+</details>
+</div>
+</section>
+
+<section class="py-14 sm:py-16" id="contact">
+  <div class="" id="about">
+    <div class="flex flex-col md:flex-row gap-12">
+
+      <!-- LEFT COLUMN (Text at top + centered horizontally) -->
+      <div class="p-10 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark animate-on-scroll slide-up flex-1 flex flex-col items-start md:items-start text-start md:text-left">
+        <div class="mb-4 max-w-lg">
+          <h3 class="text-2xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+            Über uns
+          </h3>
+          <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Seit über <span class="font-bold text-primary" id="counter">10</span> Jahren steht 
+            <span class="font-semibold text-primary">Reinteam Hamburg</span> 
+            für erstklassige und zuverlässige Textilreinigung für Geschäftskunden.
+            Wir kombinieren bewährte Erfahrung mit modernster Technik, um Ihren Textilien 
+            die beste Pflege zu garantieren. Unser Versprechen: Pünktlichkeit, makellose Qualität 
+            und ein Service, der sich flexibel an Ihre Bedürfnisse anpasst. 
+            Wir sind mehr als eine Reinigung – wir sind Ihr Partner für ein professionelles Erscheinungsbild.
+          </p>
+          <br/>
+
+
+        </div>
+<div class="space-y-6 text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+  <!-- Geschäftsführer -->
+  <div class="flex gap-3 items-center">
+    <i class="fa-solid fa-user-tie text-primary text-base sm:text-lg mt-1 flex-shrink-0"></i>
+    <div>
+      <p><strong>Geschäftsführer:</strong> Hocine Mahmoudi</p>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="flex gap-3 items-center">
+    <i class="fa-solid fa-envelope text-primary text-base sm:text-lg mt-1 flex-shrink-0"></i>
+    <div>
+      <p><strong>Email:</strong> moin@reinteam.hamburg</p>
+    </div>
+  </div>
+
+  <!-- Adresse 1 -->
+  <div class="flex gap-3 items-center">
+    <i class="fa-solid fa-location-dot text-primary text-base sm:text-lg mt-1 flex-shrink-0"></i>
+    <div>
+      <p><strong>Adresse 1:</strong> Barmbeker Str. 26c, 22303 Hamburg</p>
+    </div>
+  </div>
+
+  <!-- Adresse 2 -->
+  <div class="flex gap-3 items-center">
+    <i class="fa-solid fa-location-dot text-primary text-base sm:text-lg mt-1 flex-shrink-0"></i>
+    <div>
+      <p><strong>Adresse 2:</strong> Hauptstr. 32, 25469 Halstenbek</p>
+    </div>
+  </div>
+
+  <!-- Telefon -->
+  <div class="flex gap-3 items-center">
+    <i class="fa-solid fa-phone text-primary text-base sm:text-lg mt-1 flex-shrink-0"></i>
+    <div>
+      <p><strong>Telefon:</strong>
+        <a href="tel:0410143910" class="hover:text-primary transition">04101 43910</a> /
+        <a href="tel:01639172385" class="hover:text-primary transition">0163 9172385</a>
+      </p>
+    </div>
+  </div>
+</div>
+      </div>
+
+      <!-- RIGHT COLUMN (Form) -->
+      <div class="animate-on-scroll slide-up delay-1 flex-1 bg-white dark:bg-background-dark p-10 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Unverbindliche Anfrage stellen</h3>
+        <form onsubmit="sendEmail(event)" class="space-y-4" novalidate>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="business-name">Firmenname</label>
+            <input class="form-input mt-1 w-full bg-gray-100 dark:bg-gray-800 border-transparent focus:border-primary focus:ring-primary rounded-lg" id="business-name" name="business-name" placeholder="Ihre Firma GmbH" required type="text" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="contact-person">Ihr Name</label>
+            <input class="form-input mt-1 w-full bg-gray-100 dark:bg-gray-800 border-transparent focus:border-primary focus:ring-primary rounded-lg" id="contact-person" name="contact-person" placeholder="Max Mustermann" required type="text" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="email">E-Mail-Adresse</label>
+            <input class="form-input mt-1 w-full bg-gray-100 dark:bg-gray-800 border-transparent focus:border-primary focus:ring-primary rounded-lg" id="email" name="email" placeholder="sie@beispiel.com" required type="email" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="phone">Telefonnummer</label>
+            <input class="form-input mt-1 w-full bg-gray-100 dark:bg-gray-800 border-transparent focus:border-primary focus:ring-primary rounded-lg" id="phone" name="phone" placeholder="+49 (123) 456-7890" type="tel" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="message">Ihre Nachricht</label>
+            <textarea class="form-input mt-1 w-full bg-gray-100 dark:bg-gray-800 border-transparent focus:border-primary focus:ring-primary rounded-lg" id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Anliegen..." required rows="4"></textarea>
+          </div>
+          <div>
+            <button class="cta-button w-full bg-primary text-white text-base font-bold py-3 px-8 rounded-lg" type="submit">
+              Jetzt Angebot anfordern
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-3">
+<img height="25" width="30" src="Reinteam.png"/>
+
+
+<h2 class="text-lg font-bold text-gray-900 dark:text-white">Reinteam Hamburg</h2>
+</div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#benefits">Vorteile</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#industries">Branchen</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#loyalty">Kundenkarte</a>
+<!-- <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#about">Über uns</a> -->
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#faq">FAQ</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Kontakt</a>
+
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="allgemeine-geschaeftsbedingungen.html">AGB</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="widerruf.html">Widerruf</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="datenschutz.html">Datenschutz</a>
+<a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="impressum.html">Impressum</a>
+
+
+
+</nav>
+<p class="text-sm text-gray-500 dark:text-gray-400 text-center md:text-right">© 2025 Reinteam Hamburg.</p>
+</div>
+</div>
+</footer>
+</div>
+<script>
+  function calculateBonus() {
+    const topupAmountInput = document.getElementById('topup-amount');
+    const bonusCreditEl = document.getElementById('bonus-credit');
+    const totalCreditEl = document.getElementById('total-credit');
+    const bonusInfoEl = document.getElementById('bonus-info');
+    const progressBar = document.getElementById('progress-bar');
+    const topupAmount = parseFloat(topupAmountInput.value) || 0;
+    const bonusThreshold = 200;
+    let bonus = 0;
+    let total = topupAmount;
+    if (topupAmount >= bonusThreshold) {
+      bonus = topupAmount * 0.20;
+      total = topupAmount + bonus;
+      const bonusFormatted = bonus.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+      bonusInfoEl.textContent = `Herzlichen Glückwunsch! Sie erhalten ${bonusFormatted} Bonus!`;
+      bonusInfoEl.classList.remove('text-gray-500', 'dark:text-gray-400');
+      bonusInfoEl.classList.add('text-primary', 'font-semibold');
+    } else {
+      const remaining = bonusThreshold - topupAmount;
+      const remainingFormatted = remaining.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+      if (topupAmount > 0) {
+        bonusInfoEl.textContent = `Laden Sie noch ${remainingFormatted} auf, um den 20% Bonus zu erhalten.`;
+      } else {
+        bonusInfoEl.textContent = `Ab ${bonusThreshold.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })} Aufladung erhalten Sie 20% Bonus!`;
+      }
+      bonusInfoEl.classList.add('text-gray-500', 'dark:text-gray-400');
+      bonusInfoEl.classList.remove('text-primary', 'font-semibold');
+    }
+    bonusCreditEl.textContent = bonus.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+    totalCreditEl.textContent = total.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+    let progress = Math.min((topupAmount / bonusThreshold) * 100, 100);
+    progressBar.style.width = `${progress}%`;
+  }
+  function setTopup(amount) {
+      const topupAmountInput = document.getElementById('topup-amount');
+      topupAmountInput.value = amount;
+      calculateBonus();
+  }
+  const animationObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        if (!entry.target.classList.contains('progress-bar-fill')) {
+           observer.unobserve(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    animationObserver.observe(el);
+  });
+  const loyaltySectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const progressBar = entry.target.querySelector('.progress-bar-fill');
+              if (progressBar) {
+                  progressBar.style.animation = 'none';
+                  progressBar.offsetHeight;progressBar.style.animation = null; 
+                  progressBar.classList.add('progress-bar-fill');
+              }
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 });
+  const loyaltySection = document.getElementById('loyalty');
+  if (loyaltySection) {
+      loyaltySectionObserver.observe(loyaltySection);
+  }
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counterElement = entry.target;
+        const targetNumber = parseInt(counterElement.textContent, 10);
+        counterElement.style.opacity = 0; // Hide it initially
+        counterElement.textContent = '0'; // Start from 0
+        // Wrap each digit in a span for individual animation
+        const animatedCounter = document.createElement('span');
+        animatedCounter.textContent = targetNumber;
+        animatedCounter.classList.add('counter-animation');
+        counterElement.parentNode.replaceChild(animatedCounter, counterElement);
+        let startTimestamp = null;
+        const duration = 1500; 
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentNumber = Math.floor(progress * targetNumber);
+            animatedCounter.textContent = currentNumber;
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                 animatedCounter.textContent = targetNumber;
+            }
+        };
+        window.requestAnimationFrame(step);
+        observer.unobserve(counterElement);
+      }
+    });
+  }, { threshold: 0.8 });
+  const counter = document.getElementById('counter');
+  if(counter) {
+      counterObserver.observe(counter);
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    const headline = "Ihr Partner für Professionelle Textilpflege";
+    const animatedHeadline = document.querySelector('.animated-headline');
+    if (animatedHeadline) {
+        const words = headline.split(' ');
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.textContent = word; //word + '\u00A0';
+            span.style.marginRight = '0.4em';
+            span.style.animationDelay = `${index * 0.15}s`;
+            animatedHeadline.appendChild(span);
+        });
+    }
+    const mapIframe = document.getElementById('gmap_canvas');
+    const zoomButtons = document.querySelectorAll('.map-zoom-btn');
+    let currentZoom = 12;
+    const updateMapZoom = () => {
+        if (!mapIframe) return;
+        const src = mapIframe.src;
+        // Basic regex to find and replace zoom level (z=)
+        const newSrc = src.replace(/!1d(\d+\.?\d*)/, `!1d${currentZoom}`);
+        if(mapIframe.src !== newSrc) {
+            mapIframe.src = newSrc;
+        }
+    };
+    zoomButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const zoomChange = parseInt(button.dataset.zoom);
+            currentZoom = Math.max(8, Math.min(20, currentZoom + zoomChange)); // Clamp zoom level
+            const mapSrc = mapIframe.getAttribute('src');
+            let newSrc = mapSrc.replace(/!1m3!1d\d+\.\d+!2d\d+\.\d+!3d\d+\.\d+/, `!1m3!1d${(1 / Math.pow(2, currentZoom - 12)) * 85339}!2d9.789124707611685!3d53.64295861189417`);
+             newSrc = newSrc.replace(/(?<=!4f)13.1/, `!4f${Math.max(1, 13.1 + (zoomChange * 2))}`);
+            mapIframe.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75549.49969440626!2d9.789124707611685!3d53.64295861189417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b227a14c623583%3A0x42636a5124b4280!2sHalstenbek%2C%20Germany!5e${currentZoom-1}!3m2!1sen!2sus!4v1689264879007!5m2!1sen!2sus`
+            let newSrcTest = mapIframe.src.replace(/5e\d+/, `5e${currentZoom}`);
+             if (newSrcTest.match(/5e\d+/g).length > 1) {
+                newSrcTest = newSrcTest.replace(/5e\d+!/, `5e${currentZoom}!`);
+             }
+             mapIframe.src = newSrcTest;
+        });
+    });
+  });
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("QaEdgW84RUkw1pdyX");
+  })();
+
+  function sendEmail(event) {
+    event.preventDefault();
+    emailjs.sendForm("service_a1eudh9", "template_h9wwtaa", event.target)
+      .then(() => alert("Nachricht erfolgreich gesendet!"))
+      .catch(() => alert("Fehler beim Senden. Bitte erneut versuchen."));
+  }
+</script>
+<script>
+const btn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
+const lines = btn.querySelectorAll('span');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+  // Animate hamburger into X
+  lines[0].classList.toggle('rotate-45 translate-y-2');
+  lines[1].classList.toggle('opacity-0');
+  lines[2].classList.toggle('-rotate-45 -translate-y-2');
+});
+</script>
+</body></html>
